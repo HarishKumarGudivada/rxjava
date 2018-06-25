@@ -1,28 +1,19 @@
 package com.reactive.demo;
 
-import java.util.ArrayList;
-import java.util.List;
+import rx.Observable;
+import rx.Subscriber;
 
-import com.reactive.ReactiveJava1;
+import com.reactive.ReactiveService;
 import com.reactive.beans.EmployeeInfo;
 
-import rx.Observable;
-import rx.Scheduler;
-import rx.Subscriber;
-import rx.functions.Action1;
-import rx.schedulers.Schedulers;
-
-public class Demo1 {
+public class Demo3 {
 
 	
 	@SuppressWarnings("unchecked")
 	public static void main(String[] args) throws Exception {
-		List<EmployeeInfo> list=new ArrayList<EmployeeInfo>();
-		list.add(new EmployeeInfo(1,"Harish",20000));
-		list.add(new EmployeeInfo(2,"Teja",30000));
-		list.add(new EmployeeInfo(3,"manoj",10000));
 		
-		Observable<EmployeeInfo> obs=ReactiveJava1.getFeed(list);
+		
+		Observable<EmployeeInfo> obs=ReactiveService.getFeed();
 		
 		/*obs.subscribe(new Action1<EmployeeInfo>() {
 
@@ -48,17 +39,22 @@ public class Demo1 {
 
 			@Override
 			public void onNext(Object arg0) {
+				try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
 				EmployeeInfo inf=(EmployeeInfo)arg0;
-				System.out.println(arg0);
-				if(inf.getSalary()>21000){
+				System.out.println("Subscriber1 :"+arg0);
+				if(inf.getSalary()>20050){
 					System.out.println("Thank You I am Done ... No Need to subscribe");
 					unsubscribe();
-					
-					//throw new Exception("i m wrong ...");
 				}
 			}
 		});
-		
+
+			
+
 		System.out.println("Did i get it");
 		Thread.sleep(10000);
 	}

@@ -1,6 +1,11 @@
 package com.reactive.beans;
 public class EmployeeInfo {
 	
+	public EmployeeInfo(){
+		
+	}
+	
+	
 	public EmployeeInfo(int id,String name,double salary){
 		this.id=id;
 		this.name=name;
@@ -11,6 +16,8 @@ public class EmployeeInfo {
 	private int id;
 	private String name;
 	private double salary;
+	private String error;
+	
 	public int getId() {
 		return id;
 	}
@@ -29,7 +36,14 @@ public class EmployeeInfo {
 	public void setSalary(double salary) {
 		this.salary = salary;
 	}
-	
+	public String getError() {
+		return error;
+	}
+	public void setError(String error) {
+		this.error = error;
+	}
+
+
 	@Override
 	public String toString() {
 		return this.id+"--"+this.name+"--"+this.salary;

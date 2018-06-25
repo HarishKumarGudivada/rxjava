@@ -3,9 +3,7 @@ package com.reactive;
 
 import java.util.List;
 
-
 import rx.Observable;
-
 
 import com.reactive.beans.EmployeeInfo;
 
@@ -20,9 +18,12 @@ public class ReactiveJava1 {
 			while(!subscriber.isUnsubscribed()){
 				System.out.println("starting");
 				empInf.stream()
-				.forEach(subscriber::onNext);
+				.forEach(subscriber::onNext)
+				
+				
+				;
 				System.out.println("entered");
-			
+			       
 					Thread.sleep(1000);
 				}
 			}catch (Exception e) {
@@ -33,9 +34,6 @@ public class ReactiveJava1 {
 			subscriber.onCompleted();
 		});
 	}
-	
-	
-	
 	
 	
 }
